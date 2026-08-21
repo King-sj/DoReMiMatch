@@ -22,6 +22,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      # 规避 npm "Exit handler never called" 已知 bug
+      - run: npm install -g npm@latest
       - run: npm ci
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
